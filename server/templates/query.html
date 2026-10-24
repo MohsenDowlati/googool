@@ -1,0 +1,50 @@
+<div>
+
+    {% if documents.len() == 0 %}
+    <h1 class="text-xl"> No documents found</h1>
+    {% else %}
+    <h1 class="text-xl"> Search results</h1>
+    {% endif %}
+
+    <h1 class=" font-light text-md  mt-3 mb-3">
+        Query time: {{ time_ms }}ms
+    </h1>
+    <h1 class=" font-light text-md mb-6">
+        Searched tokens:
+        {% for t in tokens %}
+        {{t}}
+        {% if !loop.last %}
+        -
+        {% endif %}
+        {% endfor %}
+    </h1>
+
+
+    {% for doc in documents %}
+
+
+    <div id="{{doc.path}}"
+         class="toggle-container hover:cursor-pointer bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 hover:dark:bg-zinc-700 p-6 rounded-md mb-6">
+        <div id="{{doc.path}}_closed">
+            <h2 class="text-xl font-semibold mb-4">
+                {{ doc.path }}
+            </h2>
+            <p>
+                {{ doc.content|truncate(150) }}
+            </p>
+        </div>
+        <div id="{{doc.path}}_open" style="display:none;">
+            <h2 class="text-xl font-semibold mb-4">
+                {{ doc.path }}
+            </h2>
+            <p>
+                {{ doc.content }}
+            </p>
+        </div>
+    </div>
+
+    {% endfor %}
+
+
+
+</div>
