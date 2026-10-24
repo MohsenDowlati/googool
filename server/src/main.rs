@@ -28,7 +28,7 @@ struct AppState {
 
 #[tokio::main]
 async fn main() {
-    std::env::set_var("RUST_LOG", "info");
+    unsafe { std::env::set_var("RUST_LOG", "info"); }
     env_logger::init();
 
     let args: Vec<String> = env::args().collect();
