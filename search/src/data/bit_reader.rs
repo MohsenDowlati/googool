@@ -130,7 +130,7 @@ impl BitsReader {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::{disk::bits_writer::BitsWriter, test_utils::utils::create_temporary_file_path};
+    use crate::{data::bits_writer::BitsWriter, test_utils::utils::create_temporary_file_path};
 
     #[test]
     fn test_read() {
